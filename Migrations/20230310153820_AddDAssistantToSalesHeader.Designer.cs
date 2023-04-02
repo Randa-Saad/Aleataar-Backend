@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesOrderAPI.Models;
 
@@ -11,9 +12,10 @@ using SalesOrderAPI.Models;
 namespace SalesOrderAPI.Migrations
 {
     [DbContext(typeof(Sales_DBContext))]
-    partial class Sales_DBContextModelSnapshot : ModelSnapshot
+    [Migration("20230310153820_AddDAssistantToSalesHeader")]
+    partial class AddDAssistantToSalesHeader
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,9 +139,6 @@ namespace SalesOrderAPI.Migrations
                     b.Property<int?>("Category")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("ConsumedPrice")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Name")
                         .HasMaxLength(250)
                         .IsUnicode(false)
@@ -152,12 +151,6 @@ namespace SalesOrderAPI.Migrations
                         .HasMaxLength(50)
                         .IsUnicode(false)
                         .HasColumnType("varchar(50)");
-
-                    b.Property<decimal?>("SegmentedPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("TotalizedPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Code");
 
@@ -176,9 +169,6 @@ namespace SalesOrderAPI.Migrations
                     b.Property<int?>("ColorId")
                         .HasColumnType("int");
 
-                    b.Property<decimal?>("ConsumedPrice")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<bool?>("Isactive")
                         .HasColumnType("bit");
 
@@ -195,14 +185,8 @@ namespace SalesOrderAPI.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<decimal?>("SegmentedPrice")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int?>("SizeId")
                         .HasColumnType("int");
-
-                    b.Property<decimal?>("TotalizedPrice")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -291,9 +275,6 @@ namespace SalesOrderAPI.Migrations
                     b.Property<decimal?>("Total")
                         .HasColumnType("numeric(18,2)");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("WhMp")
                         .HasColumnType("nvarchar(max)");
 
@@ -330,9 +311,6 @@ namespace SalesOrderAPI.Migrations
                     b.Property<string>("ProductName")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("ProductType")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Qty")
                         .HasColumnType("int");

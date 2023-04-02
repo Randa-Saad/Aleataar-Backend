@@ -11,6 +11,9 @@ namespace SalesOrderAPI.Models
         public int? SizeId { get; set; }
         public string? Remarks { get; set; }
         public decimal? Price { get; set; }
+        public decimal? TotalizedPrice { get; set; }
+        public decimal? SegmentedPrice { get; set; }
+        public decimal? ConsumedPrice { get; set; }
         public bool? Isactive { get; set; }
     }
 }

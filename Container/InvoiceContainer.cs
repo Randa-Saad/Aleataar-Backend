@@ -116,10 +116,14 @@ public class InvoiceContainer : IInvoiceContainer
             {
                 header.CustomerId = invoiceHeader.CustomerId;
                 header.CustomerName = invoiceHeader.CustomerName;
+                header.DAssistantId = invoiceHeader.DAssistantId;
+                header.DAssistantName = invoiceHeader.DAssistantName;
                 header.DeliveryAddress = invoiceHeader.DeliveryAddress;
                 header.DelieveryDate = invoiceHeader.DelieveryDate;
                 header.OrderDate= invoiceHeader.OrderDate;
                 header.WhMp=invoiceHeader.WhMp;
+                header.Type = invoiceHeader.Type;
+                header.Restricted = invoiceHeader.Restricted;
                 header.Total = invoiceHeader.Total;
                 header.Remarks = invoiceHeader.Remarks;
                 header.Tax = invoiceHeader.Tax;

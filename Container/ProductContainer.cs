@@ -83,6 +83,9 @@ public class ProductContainer : IProductContainer
                         _product.Name = product.Name;
                         _product.Category = product.Category;
                         _product.Price = product.Price;
+                        _product.TotalizedPrice = product.TotalizedPrice;
+                        _product.SegmentedPrice = product.SegmentedPrice;
+                        _product.ConsumedPrice = product.ConsumedPrice;
                         _product.Remarks = product.Remarks;
                         // await this._DBContext.SaveChangesAsync();
 
@@ -95,6 +98,9 @@ public class ProductContainer : IProductContainer
                             Code = product.Code,
                             Name = product.Name,
                             Price = product.Price,
+                            TotalizedPrice = product.TotalizedPrice,
+                            SegmentedPrice = product.SegmentedPrice,
+                            ConsumedPrice = product.ConsumedPrice,
                             Category = product.Category,
                             Remarks = product.Remarks
                         };
@@ -155,7 +161,10 @@ public class ProductContainer : IProductContainer
                 _existdata.SizeId = _variant.SizeId;
                 _existdata.ProductCode = _variant.ProductCode;
                 _existdata.Price = _variant.Price;
-                 _existdata.Remarks = _variant.Remarks;
+                _existdata.TotalizedPrice = _variant.TotalizedPrice;
+                _existdata.SegmentedPrice = _variant.SegmentedPrice;
+                _existdata.ConsumedPrice = _variant.ConsumedPrice;
+                _existdata.Remarks = _variant.Remarks;
             }
             else
             {
@@ -163,8 +172,11 @@ public class ProductContainer : IProductContainer
                 {
                     ColorId = _variant.ColorId,
                     SizeId = _variant.SizeId,
-                    Price = _variant.Price,
                     ProductCode = ProductCode,
+                    Price = _variant.Price,
+                    TotalizedPrice = _variant.TotalizedPrice,
+                    SegmentedPrice = _variant.SegmentedPrice,
+                    ConsumedPrice = _variant.ConsumedPrice,
                     Remarks = _variant.Remarks,
                     Isactive = true
                 };

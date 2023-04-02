@@ -4,9 +4,13 @@ public class InvoiceHeader{
         public DateTime InvoiceDate { get; set; }
         public DateTime? OrderDate { get; set; }
         public string? WhMp { get; set; }
+        public string? Type { get; set; }
+        public string? Restricted { get; set; }
         public DateTime? DelieveryDate { get; set; }
         public string CustomerId { get; set; } = null!;
         public string? CustomerName { get; set; }
+        public string DAssistantId { get; set; }
+        public string? DAssistantName { get; set; }
         public string? DeliveryAddress { get; set; }
         public string? Remarks { get; set; }
         public decimal? Total { get; set; }
