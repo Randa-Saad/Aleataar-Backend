@@ -46,6 +46,12 @@ public class InvoiceController : ControllerBase
         return await this._container.Save(invoiceEntity);
 
     }
+    [HttpPost("SaveHeader")]
+    public async Task<ResponseType> SaveHeader([FromBody] InvoiceHeader invoiceHeader)
+    {
+        return await this._container.SaveHeader(invoiceHeader);
+
+    }
 
     [HttpDelete("Remove")]
     public async Task<ResponseType> Remove(string InvoiceNo)

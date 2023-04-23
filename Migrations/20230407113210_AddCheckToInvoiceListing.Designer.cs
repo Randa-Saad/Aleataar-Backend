@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesOrderAPI.Models;
 
@@ -11,9 +12,10 @@ using SalesOrderAPI.Models;
 namespace SalesOrderAPI.Migrations
 {
     [DbContext(typeof(Sales_DBContext))]
-    partial class Sales_DBContextModelSnapshot : ModelSnapshot
+    [Migration("20230407113210_AddCheckToInvoiceListing")]
+    partial class AddCheckToInvoiceListing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

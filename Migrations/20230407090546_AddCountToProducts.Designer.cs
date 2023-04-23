@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesOrderAPI.Models;
 
@@ -11,9 +12,10 @@ using SalesOrderAPI.Models;
 namespace SalesOrderAPI.Migrations
 {
     [DbContext(typeof(Sales_DBContext))]
-    partial class Sales_DBContextModelSnapshot : ModelSnapshot
+    [Migration("20230407090546_AddCountToProducts")]
+    partial class AddCountToProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -241,9 +243,6 @@ namespace SalesOrderAPI.Migrations
                     b.Property<string>("InvoiceNo")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
-
-                    b.Property<bool?>("Checked")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("CreateDate")
                         .HasColumnType("smalldatetime");

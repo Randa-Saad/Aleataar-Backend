@@ -1,5 +1,5 @@
 public class InvoiceHeader{
-
+        public Boolean? Checked { get; set; }
         public string InvoiceNo { get; set; } = null!;
         public DateTime InvoiceDate { get; set; }
         public DateTime? OrderDate { get; set; }

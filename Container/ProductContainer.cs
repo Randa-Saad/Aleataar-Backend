@@ -86,6 +86,9 @@ public class ProductContainer : IProductContainer
                         _product.TotalizedPrice = product.TotalizedPrice;
                         _product.SegmentedPrice = product.SegmentedPrice;
                         _product.ConsumedPrice = product.ConsumedPrice;
+                        _product.CountedCtns = product.CountedCtns;
+                        _product.CountedBoxes = product.CountedBoxes;
+                        _product.CountesPieces = product.CountesPieces;
                         _product.Remarks = product.Remarks;
                         // await this._DBContext.SaveChangesAsync();
 
@@ -101,6 +104,9 @@ public class ProductContainer : IProductContainer
                             TotalizedPrice = product.TotalizedPrice,
                             SegmentedPrice = product.SegmentedPrice,
                             ConsumedPrice = product.ConsumedPrice,
+                            CountedCtns = product.CountedCtns,
+                            CountedBoxes = product.CountedBoxes,
+                            CountesPieces = product.CountesPieces,
                             Category = product.Category,
                             Remarks = product.Remarks
                         };

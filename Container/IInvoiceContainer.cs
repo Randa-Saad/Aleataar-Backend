@@ -4,5 +4,6 @@ public interface IInvoiceContainer
     Task<InvoiceHeader> GetAllInvoiceHeaderbyCode(string invoiceno);
     Task<List<InvoiceDetail>> GetAllInvoiceDetailbyCode(string invoiceno);
     Task<ResponseType> Save(InvoiceInput invoiceEntity);
+    Task<ResponseType> SaveHeader(InvoiceHeader invoiceHeader);
     Task<ResponseType> Remove(string invoiceno);
 }

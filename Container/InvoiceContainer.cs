@@ -2,6 +2,8 @@ using SalesOrderAPI.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using System.Reflection.PortableExecutable;
+
 public class InvoiceContainer : IInvoiceContainer
 {
     private readonly Sales_DBContext _DBContext;
@@ -114,6 +116,7 @@ public class InvoiceContainer : IInvoiceContainer
 
             if (header != null)
             {
+                header.Checked = invoiceHeader.Checked;
                 header.CustomerId = invoiceHeader.CustomerId;
                 header.CustomerName = invoiceHeader.CustomerName;
                 header.DAssistantId = invoiceHeader.DAssistantId;
@@ -194,5 +197,41 @@ public class InvoiceContainer : IInvoiceContainer
         }
 
     }
+
+    public async Task<ResponseType> SaveHeader(InvoiceHeader invoiceHeader)
+    {
+        string Results = string.Empty;
+
+        try
+        {
+            var header = await this._DBContext.TblSalesHeaders.FirstOrDefaultAsync(item => item.InvoiceNo == invoiceHeader.InvoiceNo);
+
+            if (header != null)
+            {
+                using (var dbtransaction = await this._DBContext.Database.BeginTransactionAsync())
+                {
+
+                    header.Restricted = "Yes";
+                    header.ModifyUser = invoiceHeader.CreateUser;
+                    header.ModifyDate = DateTime.Now;
+
+
+                    await this._DBContext.SaveChangesAsync();
+                    await dbtransaction.CommitAsync();
+
+                }
+                return new ResponseType() { Result = "pass", KyValue = invoiceHeader.InvoiceNo };
+            }
+            else
+            {
+                return new ResponseType() { Result = "faill"};
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+
 
 }
