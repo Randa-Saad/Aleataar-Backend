@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesOrderAPI.Models;
 
@@ -11,9 +12,10 @@ using SalesOrderAPI.Models;
 namespace SalesOrderAPI.Migrations
 {
     [DbContext(typeof(Sales_DBContext))]
-    partial class Sales_DBContextModelSnapshot : ModelSnapshot
+    [Migration("20230423114859_AddNewAttributesInCustomer")]
+    partial class AddNewAttributesInCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -30,5 +30,17 @@ public class CustomerController : ControllerBase
         return await this._container.Getbycode(Code);
 
     }
+    [HttpPost("SaveCustomer")]
+    public async Task<ResponseType> SaveCustomer([FromBody] CustomerEntity customer)
+    {
+        return await this._container.SaveCustomer(customer);
+
+    }
+    [HttpDelete("Remove")]
+    public async Task<ResponseType> Remove(string CustomerCode)
+    {
+        return await this._container.Remove(CustomerCode);
+
+    }
 
 }

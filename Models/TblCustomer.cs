@@ -8,6 +8,8 @@ namespace SalesOrderAPI.Models
         public string Code { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string? Address { get; set; }
+        public string? Area { get; set; }
+        public string? SpecialMark { get; set; }
         public string? Phoneno { get; set; }
         public string? Email { get; set; }
         public bool? IsActive { get; set; }
@@ -15,5 +17,6 @@ namespace SalesOrderAPI.Models
         public string? ModifyUser { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? ModifyDate { get; set; }
+
     }
 }
