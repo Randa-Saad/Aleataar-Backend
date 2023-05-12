@@ -137,4 +137,9 @@ public class ProductController : ControllerBase
 
     }
 
+    [HttpDelete("Remove")]
+    public async Task<ResponseType> Remove(string ProductCode)
+    {
+        return await this._container.Remove(ProductCode);
+    }
 }

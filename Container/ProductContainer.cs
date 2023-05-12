@@ -70,6 +70,7 @@ public class ProductContainer : IProductContainer
         {
             string Result = string.Empty;
             int processcount = 0;
+            string resultStatusMsg = "";
 
             if (product != null)
             {
@@ -88,10 +89,10 @@ public class ProductContainer : IProductContainer
                         _product.ConsumedPrice = product.ConsumedPrice;
                         _product.CountedCtns = product.CountedCtns;
                         _product.CountedBoxes = product.CountedBoxes;
-                        _product.CountesPieces = product.CountesPieces;
+                        _product.CountedPieces = product.CountedPieces;
                         _product.Remarks = product.Remarks;
                         // await this._DBContext.SaveChangesAsync();
-
+                        resultStatusMsg = "updated";
                     }
                     else
                     {
@@ -106,51 +107,30 @@ public class ProductContainer : IProductContainer
                             ConsumedPrice = product.ConsumedPrice,
                             CountedCtns = product.CountedCtns,
                             CountedBoxes = product.CountedBoxes,
-                            CountesPieces = product.CountesPieces,
+                            CountedPieces = product.CountedPieces,
                             Category = product.Category,
                             Remarks = product.Remarks
                         };
                         await this._DBContext.TblProducts.AddAsync(_newproduct);
-                        // await this._DBContext.SaveChangesAsync();
+                        resultStatusMsg = "added";
                     }
-                    if (product.Variants != null && product.Variants.Count > 0)
-                    {
-                        product.Variants.ForEach(item =>
-                        {
-                            var _resp = SaveProductVariant(item, product.Code);
-                            if (_resp.Result)
-                            {
-                                processcount++;
-                            }
-                        });
-                        if (processcount == product.Variants.Count)
-                        {
-                            await this._DBContext.SaveChangesAsync();
-                            await dbtransaction.CommitAsync();
-                            return new ResponseType() { KyValue = product.Code, Result = "pass" };
-                        }
-                        else
-                        {
-                            await dbtransaction.RollbackAsync();
-                        }
+                        await this._DBContext.SaveChangesAsync();
+                        await dbtransaction.CommitAsync();
+                        return new ResponseType() { Result = resultStatusMsg, KyValue = product.Code };
                     }
-                }
-
-
             }
             else
             {
-
+                return new ResponseType() { KyValue = string.Empty, Result = "fail" };
             }
-        }
+            }
 
 
         catch (Exception ex)
         {
             throw ex;
         }
-
-        return new ResponseType() { KyValue = string.Empty, Result = "fail" };
+       // return new ResponseType() { KyValue = string.Empty, Result = "fail" };
     }
 
     private async Task<bool> SaveProductVariant(ProductVariantEntity _variant, string ProductCode)
@@ -198,5 +178,26 @@ public class ProductContainer : IProductContainer
         return Result;
     }
 
+    public async Task<ResponseType> Remove(string productcode)
+    {
+        try
+        {
+            using (var dbtransaction = await this._DBContext.Database.BeginTransactionAsync())
+            {
+                var _data = await this._DBContext.TblProducts.FirstOrDefaultAsync(item => item.Code == productcode);
+                if (_data != null)
+                {
+                    this._DBContext.TblProducts.Remove(_data);
+                }
+                await this._DBContext.SaveChangesAsync();
+                await dbtransaction.CommitAsync();
+            }
+            return new ResponseType() { Result = "pass", KyValue = productcode };
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
 
+    }
 }

@@ -21,7 +21,7 @@ namespace SalesOrderAPI.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "CountesPieces",
+                name: "CountedPieces",
                 table: "tbl_product",
                 type: "int",
                 nullable: true);
@@ -38,7 +38,7 @@ namespace SalesOrderAPI.Migrations
                 table: "tbl_product");
 
             migrationBuilder.DropColumn(
-                name: "CountesPieces",
+                name: "CountedPieces",
                 table: "tbl_product");
         }
     }

@@ -152,7 +152,7 @@ namespace SalesOrderAPI.Migrations
                     b.Property<int?>("CountedCtns")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CountesPieces")
+                    b.Property<int?>("CountedPieces")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
